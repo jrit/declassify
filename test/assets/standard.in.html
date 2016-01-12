@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <style>
+            .used-class { color: red; }
+            #used-id { color: blue; }
+            @media {
+                .used-mq-class { color: red; }
+                #used-mq-id { color: blue; }
+            }
+        </style>
+    </head>
+    <body class="unused" style="color: black;">
+        <div class="used-class used-mq-class"></div>
+        <div id="used-id"></div>
+        <div class="used-id"></div>
+        <div id="used-mq-id"></div>
+    </body>
+</html>

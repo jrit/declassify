@@ -1,0 +1,33 @@
+{
+  "name": "html-declassify",
+  "version": "1.0.0",
+  "description": "Remove any classes or IDs not found in CSS from HTML - modifies HTML, not CSS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "testcover": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vokal/html-declassify.git"
+  },
+  "keywords": [
+    "HTML",
+    "CSS",
+    "clean",
+    "process"
+  ],
+  "author": "Vokal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vokal/html-declassify/issues"
+  },
+  "homepage": "https://github.com/vokal/html-declassify#readme",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "cssom": "^0.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  }
+}

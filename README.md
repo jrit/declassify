@@ -4,7 +4,7 @@ Remove any classes or IDs not found in CSS from HTML - modifies HTML, not CSS.
 
 This only considers CSS contained in the HTML document inside `<style>` tags to be in use right now. Currently limited to modifying `class` and `id` attributes, so won't do anything with `[data]` or other attributes less commonly used in CSS.
 
-`npm install html-declassify`
+`npm install declassify`
 
 ## Example
 

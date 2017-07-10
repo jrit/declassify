@@ -6,15 +6,24 @@ var cheerio = require('cheerio');
 var declassify = {};
 
 module.exports = declassify;
+var idRuleRegex = /(\#)([_a-zA-Z\-][_a-zA-Z0-9-]+)\b/g;
+var classRuleRegex = /(\.)([_a-zA-Z\-][_a-zA-Z0-9-]+)\b/g;
 
 var getRuleName = function(rule, selector) {
-  if (selector === 'id' && rule.selectorText.substr(0,1) === '#') {
-    return rule.selectorText.substr(1);
+  var ruleNames = [];
+  var matches;
+  var selectorText = rule.selectorText;
+  var ruleRegex = selector === 'id' ? idRuleRegex : classRuleRegex;
+
+  while ((matches = ruleRegex.exec(selectorText)) !== null) {
+    var i = 2;
+    while (matches[i]) {
+      ruleNames.push(matches[i]);
+      i++;
+    }
   }
-  if (selector === 'class' && rule.selectorText.substr(0,1) === '.') {
-    return rule.selectorText.substr(1);
-  }
-  return null;
+
+  return ruleNames;
 };
 
 var getRules = function(cssomRules, selector) {
@@ -23,11 +32,11 @@ var getRules = function(cssomRules, selector) {
     var rule = cssomRules[i];
     if (rule.selectorText) {
       var ruleName = getRuleName(rule, selector);
-      if (ruleName) {
-        result.push(ruleName);
-      }
+      ruleName.forEach(function(name) {
+        result.push(name);
+      });
     } else if (rule.media && rule.cssRules) {
-      return result.concat(getRules(rule.cssRules, selector));
+      result = result.concat(getRules(rule.cssRules, selector));
     }
   }
   return result;
@@ -82,6 +91,6 @@ declassify.pruneAttrs = function(attrNames, $) {
 
 declassify.process = function(htmlInput) {
   var $ = cheerio.load(htmlInput);
-  declassify.pruneAttrs(['id','class'], $);
+  declassify.pruneAttrs(['id', 'class'], $);
   return $.html();
 };

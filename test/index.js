@@ -17,3 +17,16 @@ it('processes the HTML', function() {
 
   assert.equal(result, expected);
 });
+
+it('processes the HTML with compound rules', function() {
+  var input = fs.readFileSync(
+      path.join(__dirname, 'assets', 'compound.in.html'), 'utf8');
+
+  var expected = fs.readFileSync(
+      path.join(__dirname, 'assets', 'compound.out.html'), 'utf8');
+
+  var result = declassify.process(input);
+
+  assert.equal(result, expected);
+});
+

@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <style>
+    @media only screen and (max-width: 596px) {
+        div.element-specific-media-query-rule {
+            width: 100% !important;
+        }
+    }
+    div.element-specific-rule {
+        color: red;
+    }
+    .wrapper-class-outer .wrapper-class-inner {
+        color: green;
+    }
+    </style>
+</head>
+
+<body style="color: black;">
+    <div class="element-specific-rule">Foo</div>
+    <div class="element-specific-media-query-rule">bar</div>
+    <div class="wrapper-class-outer">
+        <span class="wrapper-class-inner">
+            Bar
+        </span>
+    </div>
+</body>
+</html>

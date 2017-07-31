@@ -1,6 +1,6 @@
 {
   "name": "declassify",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Remove any classes or IDs not found in CSS from HTML - modifies HTML, not CSS.",
   "main": "index.js",
   "scripts": {
@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/vokal/declassify#readme",
   "dependencies": {
-    "cheerio": "^0.19.0",
-    "cssom": "^0.3.0"
+    "cheerio": "^0.22.0",
+    "cssom": "^0.3.2"
   },
   "devDependencies": {
     "mocha": "^2.3.4"

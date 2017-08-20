@@ -52,7 +52,7 @@ declassify.getInUseAttr = function(css, selector) {
   return getRules(rules, selector);
 };
 
-declassify.pruneAttr = function(attrName, $) {
+declassify.pruneAttr = function(attrName, $, ignore) {
   var $items = $('[' + attrName + ']');
   var css = [];
   $('style').each(function() {
@@ -70,7 +70,16 @@ declassify.pruneAttr = function(attrName, $) {
 
     var tokens = $item.attr(attrName).split(' ');
     for (var tokenIndex = tokens.length; tokenIndex >= 0; tokenIndex--) {
-      if (inUse.indexOf(tokens[tokenIndex]) === -1) {
+      var isIgnored = false;
+      for (var ignoreIndex = ignore.length; ignoreIndex >= 0; ignoreIndex--) {
+        if (ignore[ignoreIndex] instanceof RegExp && ignore[ignoreIndex].test(tokens[tokenIndex])) {
+          isIgnored = true;
+        } else if (ignore[ignoreIndex] === tokens[tokenIndex]) {
+          isIgnored = true;
+        }
+      }
+
+      if (inUse.indexOf(tokens[tokenIndex]) === -1 && !isIgnored) {
         tokens.splice(tokenIndex, 1);
       }
     };
@@ -83,14 +92,17 @@ declassify.pruneAttr = function(attrName, $) {
   });
 };
 
-declassify.pruneAttrs = function(attrNames, $) {
+declassify.pruneAttrs = function(attrNames, $, ignore) {
   attrNames.forEach(function(attr) {
-    declassify.pruneAttr(attr, $);
+    declassify.pruneAttr(attr, $, ignore);
   });
 };
 
-declassify.process = function(htmlInput) {
+declassify.process = function(htmlInput, options) {
+  if (options === void 0) options = {};
+
   var $ = cheerio.load(htmlInput);
-  declassify.pruneAttrs(['id', 'class'], $);
+  var ignore = options.ignore || [];
+  declassify.pruneAttrs(['id', 'class'], $, ignore);
   return $.html();
 };

@@ -6,8 +6,8 @@ var cheerio = require('cheerio');
 var declassify = {};
 
 module.exports = declassify;
-var idRuleRegex = /(\#)([_a-zA-Z\-][_a-zA-Z0-9-]+)\b/g;
-var classRuleRegex = /(\.)([_a-zA-Z\-][_a-zA-Z0-9-]+)\b/g;
+var idRuleRegex = /(\#)(-?[_a-zA-Z]+[_a-zA-Z0-9-]*)\b/g;
+var classRuleRegex = /(\.)(-?[_a-zA-Z]+[_a-zA-Z0-9-]*)\b/g;
 
 var getRuleName = function(rule, selector) {
   var ruleNames = [];

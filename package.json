@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vokal/declassify.git"
+    "url": "git+https://github.com/jrit/declassify.git"
   },
   "keywords": [
     "HTML",
@@ -20,9 +20,9 @@
   "author": "Vokal",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vokal/declassify/issues"
+    "url": "https://github.com/jrit/declassify/issues"
   },
-  "homepage": "https://github.com/vokal/declassify#readme",
+  "homepage": "https://github.com/jrit/declassify#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
     "cssom": "^0.3.2"

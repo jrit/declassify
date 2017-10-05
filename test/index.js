@@ -45,6 +45,16 @@ it('processes the HTML and ignores given rules', function() {
           /ignored-regex-id\-[0-9]+/
         ]
       });
+});
+
+it('processes the HTML with quote marks', function() {
+  var input = fs.readFileSync(
+      path.join(__dirname, 'assets', 'special-chars.in.html'), 'utf8');
+
+  var expected = fs.readFileSync(
+      path.join(__dirname, 'assets', 'special-chars.out.html'), 'utf8');
+
+  var result = declassify.process(input);
 
   assert.equal(result, expected);
 });

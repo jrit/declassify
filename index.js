@@ -101,8 +101,8 @@ declassify.pruneAttrs = function(attrNames, $, ignore) {
 declassify.process = function(htmlInput, options) {
   if (options === void 0) options = {};
 
-  var $ = cheerio.load(htmlInput);
+  var $ = cheerio.load(htmlInput, {decodeEntities: false});
   var ignore = options.ignore || [];
   declassify.pruneAttrs(['id', 'class'], $, ignore);
-  return $.html();
+  return $.html({decodeEntities: false});
 };

@@ -57,7 +57,8 @@ var options = {
     /ignored-regex-class\-[0-9]+/,
     'ignored-id',
     /ignored-regex-id\-[0-9]+/
-  ]
+  ],
+  attrs: ['id', 'class']
 };
 var result = declassify.process(html, options);
 ```

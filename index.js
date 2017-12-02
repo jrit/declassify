@@ -103,6 +103,7 @@ declassify.process = function(htmlInput, options) {
 
   var $ = cheerio.load(htmlInput, {decodeEntities: false});
   var ignore = options.ignore || [];
-  declassify.pruneAttrs(['id', 'class'], $, ignore);
+  var attrs = options.attrs || ['id', 'class'];
+  declassify.pruneAttrs(attrs, $, ignore);
   return $.html({decodeEntities: false});
 };

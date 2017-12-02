@@ -1,6 +1,6 @@
 {
   "name": "declassify",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Remove any classes or IDs not found in CSS from HTML - modifies HTML, not CSS.",
   "main": "index.js",
   "scripts": {
